@@ -48,6 +48,8 @@ import javax.swing.text.TabStop;
 import com.anlugifa.editor.base.GroovyFilter;
 import com.anlugifa.editor.base.MyUndoableListener;
 import com.anlugifa.editor.xml.StyleManager;
+import java.io.OutputStream;
+import sun.tools.jar.CommandLine;
 
 public class JEditor extends JFrame
 {
@@ -508,8 +510,8 @@ public class JEditor extends JFrame
     protected void OnMniComp()
     {   
         String local = System.getProperty("user.dir");
-        String comando="java -jar "+local+"\\lanq.jar " +file;
-        ExecComando.executar("cmd.exe","/c",comando); 
+        String comando="cmd /c java -jar "+local+"\\lanq.jar " +file;
+        ExecComando.executar("cmd.exe","/C",comando); 
     }
 
 
