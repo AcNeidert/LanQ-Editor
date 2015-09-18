@@ -19,7 +19,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
-
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.Box;
@@ -507,9 +506,10 @@ public class JEditor extends JFrame
         }
     }
     protected void OnMniComp()
-    {
-        String comando="java -jar C:\\Users\\andre.neidert\\Documents\\NetBeansProjects\\Editor\\lanq\\lanq.jar " +file;
-       ExecComando.executar("cmd.exe","/c",comando); 
+    {   
+        String local = System.getProperty("user.dir");
+        String comando="java -jar "+local+"\\lanq.jar " +file;
+        ExecComando.executar("cmd.exe","/c",comando); 
     }
 
 
