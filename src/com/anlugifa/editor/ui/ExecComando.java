@@ -58,13 +58,13 @@ inputErro.close();
  
 if(!sucesso.equals("")){
  
-System.out.println("Sucesso!");
+System.out.println("");
  
 System.out.println(sucesso);
  
 }else if(!erro.equals("")){
  
-System.out.println("Erro!");
+System.out.println("");
  
 System.out.println(erro);
  
