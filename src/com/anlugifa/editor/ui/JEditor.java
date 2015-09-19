@@ -49,6 +49,7 @@ import javax.swing.text.TabStop;
 import com.anlugifa.editor.base.GroovyFilter;
 import com.anlugifa.editor.base.MyUndoableListener;
 import com.anlugifa.editor.xml.StyleManager;
+import static java.lang.System.out;
 
 public class JEditor extends JFrame
 {
@@ -508,8 +509,10 @@ public class JEditor extends JFrame
     }
     protected void OnMniComp()
     {
-        String comando="java -jar C:\\Users\\andre.neidert\\Documents\\NetBeansProjects\\Editor\\lanq\\lanq.jar " +file;
-       ExecComando.executar("cmd.exe","/c",comando); 
+        String Local = System.getProperty("user.dir");
+        String comando=" java -jar "+Local+"\\lanq.jar " +file;
+        JOptionPane.showMessageDialog(null,ExecComando.executar("cmd.exe","/c",comando),"Result:",JOptionPane.PLAIN_MESSAGE);
+        System.out.println(ExecComando.executar("cmd.exe","/c",comando)); 
     }
 
 
