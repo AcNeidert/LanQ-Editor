@@ -509,7 +509,8 @@ public class JEditor extends JFrame
     {   
         String local = System.getProperty("user.dir");
         String comando="java -jar "+local+"\\lanq.jar " +file;
-        ExecComando.executar("cmd.exe","/c",comando); 
+        JOptionPane.showMessageDialog(null, ExecComando.executar("cmd.exe","/c",comando));
+        //System.out.println(ExecComando.executar("cmd.exe","/c",comando));
     }
 
 

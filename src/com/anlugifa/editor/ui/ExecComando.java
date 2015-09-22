@@ -14,10 +14,12 @@ import java.io.InputStreamReader;
  */
 public class ExecComando {
  
-public static void executar(java.lang.String scriptExec, java.lang.String typeCommand, java.lang.String command){
+public static String executar(java.lang.String scriptExec, java.lang.String typeCommand, java.lang.String command){
  
     String[] finalCommand;
-
+    
+    String Retorno = "";
+    
     finalCommand = new String[3];
 
     finalCommand[0] = scriptExec;
@@ -58,15 +60,19 @@ public static void executar(java.lang.String scriptExec, java.lang.String typeCo
 
         if(!sucesso.equals("")){
 
-            System.out.println("");
+            //System.out.println("");
 
-            System.out.println(sucesso);
+            //System.out.println(sucesso);
+            
+            Retorno = sucesso;
 
         }else if(!erro.equals("")){
 
-            System.out.println("");
+            //System.out.println("");
 
-            System.out.println(erro);
+            //System.out.println(erro);
+            
+            Retorno = erro;
 
         }
  
@@ -79,6 +85,7 @@ public static void executar(java.lang.String scriptExec, java.lang.String typeCo
         ie.printStackTrace();
  
     }
+    return Retorno;
  
 }
  
