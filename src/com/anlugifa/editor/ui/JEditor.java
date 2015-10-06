@@ -548,7 +548,7 @@ public class JEditor extends JFrame
         //System.out.println(ExecComando.executar("cmd.exe","/c",comando));
         Bash janela;
         janela = new Bash();
-        janela.setTexto(comando);
+        janela.setTexto(ExecComando.executar("cmd.exe","/c",comando));
         janela.setVisible(true);
         janela.setSize(450, 450);
     }

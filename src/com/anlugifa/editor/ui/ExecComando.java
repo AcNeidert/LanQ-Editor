@@ -52,3 +52,29 @@ String sucesso = "", erro = "", escuta;
 }
  
 }
+
+/**
+import java.io.IOException;  
+import java.util.Scanner;  
+  
+public class ExecComando{  
+    
+    public static String executar(java.lang.String scriptExec, java.lang.String typeCommand, java.lang.String command) {  
+        String[] finalCommand = new String[3];
+        finalCommand[0] = scriptExec;
+        finalCommand[1] = typeCommand;
+        finalCommand[2] = command;
+        String ret = "";
+        try {  
+            Process process = Runtime.getRuntime().exec(finalCommand);  
+            Scanner leitor = new Scanner(process.getInputStream());  
+            while (leitor.hasNextLine()) {  
+                ret += leitor.nextLine();  
+            }  
+        } catch (IOException e) {  
+            e.printStackTrace();  
+        }  
+        return ret;
+    }
+}
+*/
