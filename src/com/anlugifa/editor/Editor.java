@@ -2,6 +2,7 @@ package com.anlugifa.editor;
 
 import com.anlugifa.editor.base.EditorLog;
 import com.anlugifa.editor.ui.JEditor;
+import java.awt.Frame;
 
 public class Editor implements Thread.UncaughtExceptionHandler
 {
@@ -21,6 +22,7 @@ public class Editor implements Thread.UncaughtExceptionHandler
 	public static void main(String[] args) 
 	{
     	JEditor editor = JEditor.getInstance();
-    	editor.setVisible(true);    	
+    	editor.setVisible(true);
+        editor.setExtendedState(Frame.MAXIMIZED_BOTH);
 	}    
 }

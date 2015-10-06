@@ -49,7 +49,10 @@ import javax.swing.text.TabStop;
 import com.anlugifa.editor.base.GroovyFilter;
 import com.anlugifa.editor.base.MyUndoableListener;
 import com.anlugifa.editor.xml.StyleManager;
+import java.awt.Image;
 import static java.lang.System.out;
+import javafx.scene.web.PromptData;
+import javax.swing.Icon;
 
 public class JEditor extends JFrame
 {
@@ -87,6 +90,7 @@ public class JEditor extends JFrame
     private Action saveAction = new SaveAction();
     private Action newAction = new NewAction();
     private Action compAction = new CompAction();
+    private Action latexAction = new LatexAction();
 
     class MyWindowListener extends WindowAdapter // @jve:decl-index=0:
     {
@@ -118,6 +122,9 @@ public class JEditor extends JFrame
         initialize();
         centralize();
         prepareDocuments();
+        URL Url_Da_Imagem = this.getClass().getResource("/com/anlugifa/editor/data/images/icon.png");
+        Image Imagem = Toolkit.getDefaultToolkit().getImage(Url_Da_Imagem);
+        this.setIconImage(Imagem);
     }
 
     public static JEditor getInstance()
@@ -135,6 +142,8 @@ public class JEditor extends JFrame
     {
         this.setSize(new Dimension(600, 600));
         this.setJMenuBar(getMnuBar());
+        
+        //this.setIconImage();
         this.setLayout(new BorderLayout());
         this.add(BorderLayout.NORTH, createToolbar());
         this.add(BorderLayout.CENTER, getPnlText());
@@ -173,6 +182,7 @@ public class JEditor extends JFrame
             toolbar.add(createOpenBtn());
             toolbar.add(createSaveBtn());
             toolbar.add(createCompBtn());
+            toolbar.add(createLatexBtn());
 
             toolbar.add(Box.createHorizontalStrut(5));
             toolbar.add(Box.createHorizontalGlue());
@@ -203,7 +213,11 @@ public class JEditor extends JFrame
         URL url = getClass().getResource("/com/anlugifa/editor/data/images/run.gif");        
         return createBtn(url, compAction);
     }
-
+    private Component createLatexBtn()
+    {
+        URL url = getClass().getResource("/com/anlugifa/editor/data/images/run.gif");        
+        return createBtn(url, latexAction);
+    }
     private Component createBtn(URL url, Action action)
     {
         JButton b = new JButton(new ImageIcon(url))
@@ -510,9 +524,33 @@ public class JEditor extends JFrame
     protected void OnMniComp()
     {
         String Local = System.getProperty("user.dir");
-        String comando=" java -jar "+Local+"\\lanq.jar " +file;
-        JOptionPane.showMessageDialog(null,ExecComando.executar("cmd.exe","/c",comando),"Result:",JOptionPane.PLAIN_MESSAGE);
-        System.out.println(ExecComando.executar("cmd.exe","/c",comando)); 
+        String comando;
+        comando = " java -jar "+Local+"\\lanq.jar " +file;
+        //JOptionPane.showMessageDialog(null,ExecComando.executar("cmd.exe","/c",comando),"Result:",JOptionPane.PLAIN_MESSAGE);
+        //System.out.println(ExecComando.executar("cmd.exe","/c",comando));
+        Bash janela;
+        janela = new Bash();
+        janela.setTexto(ExecComando.executar("cmd.exe","/c",comando));
+        //janela.setLocationRelativeTo(null);
+        janela.setVisible(true);
+        janela.setSize(450, 450);
+    }
+    protected void OnMniLatex()
+    {
+        String Local = System.getProperty("user.dir");
+        String comando;
+        comando = "java -jar "+Local+"\\lanq.jar -cl " +file;
+        //Bash janela;
+        //janela = new Bash();
+        //janela.setTexto(ExecComando.executar("cmd.exe","/c",comando));
+        //janela.show();
+        //JOptionPane.showMessageDialog(null,ExecComando.executar("cmd.exe","/c",comando),"Result:",JOptionPane.PLAIN_MESSAGE);
+        //System.out.println(ExecComando.executar("cmd.exe","/c",comando));
+        Bash janela;
+        janela = new Bash();
+        janela.setTexto(comando);
+        janela.setVisible(true);
+        janela.setSize(450, 450);
     }
 
 
@@ -929,6 +967,20 @@ public class JEditor extends JFrame
         {
             OnMniSave();
             OnMniComp();
+        }
+    }
+    class LatexAction extends AbstractAction
+    {
+        LatexAction()
+        {
+            super("Latex");
+        }
+
+        public void actionPerformed(ActionEvent e)
+        {
+            OnMniSave();
+            OnMniLatex();
+            //OnMniComp();
         }
     }
 
