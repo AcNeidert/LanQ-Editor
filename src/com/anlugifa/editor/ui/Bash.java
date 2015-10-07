@@ -129,6 +129,9 @@ public class Bash extends javax.swing.JFrame {
 public void setTexto(String texto){
 
     texto +="\n Pressione Enter para Sair...";
+    for(int i = 0;i<10;i++){
+        texto = texto.replaceAll("<"+i+":main>", "\n<"+i+":main> : ");
+    }
     painel.setText(texto);
     
     }

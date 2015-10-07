@@ -98,6 +98,7 @@ public RecognizerLexer(LexerSharedInputState state) {
 	literals.put(new ANTLRHashString("finally", this), new Integer(52));
 	literals.put(new ANTLRHashString("default", this), new Integer(24));
 	literals.put(new ANTLRHashString("new", this), new Integer(21));
+        literals.put(new ANTLRHashString("@", this), new Integer(68));
 	literals.put(new ANTLRHashString("instanceof", this), new Integer(42));
 }
 
@@ -152,11 +153,11 @@ tryAgain:
 						mINTLT(true);
 						theRetToken=_returnToken;
 					}
-					else if ((LA(1)=='\'') && (true) && (true) && (true) && (true)) {
+					else if ((LA(1)=='\'') && (true) && (true) && (true) && (true) && (true)) {
 						mCHARLIT(true);
 						theRetToken=_returnToken;
 					}
-					else if ((_tokenSet_0.member(LA(1))) && (true) && (true) && (true) && (true)) {
+					else if ((_tokenSet_0.member(LA(1))) && (true) && (true) && (true) && (true)&& (true)) {
 						mDELIMETER(true);
 						theRetToken=_returnToken;
 					}
@@ -769,6 +770,11 @@ inputState.guessing--;
 		case '$':
 		{
 			match('$');
+			break;
+		}
+                case '@':
+		{
+			match('@');
 			break;
 		}
 		case '`':

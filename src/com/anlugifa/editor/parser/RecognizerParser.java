@@ -102,6 +102,7 @@ public RecognizerParser(ParserSharedInputState state) {
 			case CHARLIT:
 			case LITERAL_int:
                         case LITERAL_qbit:
+                        case LITERAL_arroba:
 			case LITERAL_float:
 			case LITERAL_double:
 			case LITERAL_byte:
@@ -187,6 +188,7 @@ public RecognizerParser(ParserSharedInputState state) {
 		}
 		case LITERAL_int:
                 case LITERAL_qbit:
+                case LITERAL_arroba:
 		case LITERAL_float:
 		case LITERAL_double:
 		case LITERAL_byte:
@@ -496,6 +498,11 @@ public RecognizerParser(ParserSharedInputState state) {
                 case LITERAL_qbit:
 		{
 			match(LITERAL_qbit);
+			break;
+		}
+                case LITERAL_arroba:
+		{
+			match(LITERAL_arroba);
 			break;
 		}
 		case LITERAL_float:

@@ -92,6 +92,7 @@ types	:
 	  	| "short"	  	
 	  	| "long"
                 | "qbit"
+                | "@"
 	  	)
 	  	{
 	  		paint(LT(0), getStyle( Styles.TYPE )); 
@@ -244,13 +245,13 @@ DELIMETER
 		| ">>" | "<<"
 		| "==" 
 		| "~=="
-		| '!' | '#' | '&' | '~' | '$' | '`' | '^' | '\'' | '|'
+		| '!' | '#' | '&' | '~' | '$' | '`' | '^' | '\'' | '|' | '@'
 		)
 		{ $setType(Token.SKIP); }
 		;
 
 protected
-MISC: '-' | '_';
+MISC: '-' | '_' |'@';
 
 
 IDENT

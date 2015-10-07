@@ -75,4 +75,5 @@ public interface RecognizerParserTokenTypes {
 	int MISC = 65;
 	int IDENT = 66;
         int LITERAL_qbit = 67;
+        int LITERAL_arroba = 68;
 }

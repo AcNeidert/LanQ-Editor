@@ -539,6 +539,7 @@ public class JEditor extends JFrame
     {
         String Local = System.getProperty("user.dir");
         String comando;
+        //comando = "tree C:\\";
         comando = "java -jar "+Local+"\\lanq.jar -cl " +file;
         //Bash janela;
         //janela = new Bash();

@@ -25,7 +25,7 @@ Process proc;
 String sucesso = "", erro = "", escuta;
     try{
         proc = Runtime.getRuntime().exec(finalCommand);
-        proc.waitFor();
+        //proc.waitFor();
         BufferedReader inputSucesso = new BufferedReader(new InputStreamReader(proc.getInputStream()));
         BufferedReader inputErro = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
         while ((escuta = inputSucesso.readLine()) != null) {
@@ -34,6 +34,7 @@ String sucesso = "", erro = "", escuta;
         inputSucesso.close();
         while ((escuta = inputErro.readLine()) != null) {
             erro += escuta + "";
+            
         }
         inputErro.close();
         if(!sucesso.equals("")){
@@ -44,9 +45,7 @@ String sucesso = "", erro = "", escuta;
             retorno=erro;
         }
     }catch (IOException ex) {
-        ex.printStackTrace();
-    }catch (InterruptedException ie){
-        ie.printStackTrace(); 
+        System.err.println("Mensagem de Erro: "+ex.getMessage());
     }
  return retorno;
 }

@@ -1,0 +1,15 @@
+ /******************************************************************************
+  We define a Hermitian operator ProjTo0 which is a projector to |0> basis
+  vector. If it is given a maximally mixed state, it renormalizes the state.
+ ******************************************************************************/
+hermitian ProjTo0 = [
+    [sqrt(2), 0],
+    [0,       0]];
+
+ /******************************************************************************
+  We define a Hermitian operator ProjTo1 which is a projector to |1> basis
+  vector. If it is given a maximally mixed state, it renormalizes the state.
+ ******************************************************************************/
+hermitian ProjTo1 = [
+    [0,  0      ],
+    [0,  sqrt(2)]];
